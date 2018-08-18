@@ -9,6 +9,25 @@
   </head>
 
   <body>
-    <%= yield %>
+
+  	<header>
+
+  		<div class="notifications">
+  			<p class="notice"><%= notice %></p>
+  			<p class="alert"><%= alert %></p>
+  		</div>
+  	
+  	</header>
+    
+
+    <section>
+    	<%= yield %>
+    </section>
+
+    <footer id="rodape">
+    	  <h3>Rodapé da Página</h3>
+    </footer>
+  
+
   </body>
 </html>
