@@ -5,5 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :tweets
-  has_many :relationships
+ 
+
+  has_many :followers, class_name: "Relationship", foreign_key: "follower_id"
+  has_many :following, class_name: "Relationship", foreign_key: "followed_id"
+
 end

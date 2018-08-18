@@ -1,6 +1,8 @@
 class Relationship < ApplicationRecord
-  belongs_to :follower
-  belongs_to :followed
+  belongs_to :follower, class_name: "User"
+  belongs_to :followed, class_name: "User"
 
-  has_many :users
+
+  belongs_to :user
+
 end
