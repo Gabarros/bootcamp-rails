@@ -1,2 +1,30 @@
-<h1>Teste</h1>
+<h1>Login</h1>
+
+
+<% if user_signed_in? %>
+	Olá <%= current_user.email %>!
+
+	<h3>Novo Tweet</h3>
+
+	<%= form_for @tweet do |f|%>
+	<%= f.text_field :content %>
+	<%= f.submit %>
+	<% end %>
+
+
+	<h2>Lista de Tweets</h2>
+
+	<% current_user.tweets.each do |tweet|%>
+
+	<ul>
+		<li><%= tweet.content %></li>
+	</ul>
+		
+	<% end %>
+
+
+	<%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+<% else %>
+	<%= link_to 'Sign In', new_user_session_path %>
+<% end %>
 
