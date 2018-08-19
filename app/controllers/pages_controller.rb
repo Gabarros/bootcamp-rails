@@ -7,4 +7,10 @@ class PagesController < ApplicationController
 		end
 			
 	end
+
+	def followers
+		@user = current_user
+
+		
+	end
 end

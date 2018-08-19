@@ -1,8 +1,16 @@
 <h1>Login</h1>
 
+<div id="user_menu">
 
 <% if user_signed_in? %>
 	Olá <%= current_user.email %>!
+	<br>
+
+	<%= link_to 'Seguindo', 'following_path' %>:
+	 <%= current_user.following.count %>
+
+	<%= link_to 'Seguidores', followers_path %>:
+	 <%= current_user.followers.count %>
 
 	<h3>Novo Tweet</h3>
 
@@ -14,17 +22,31 @@
 
 	<h2>Lista de Tweets</h2>
 
-	<% current_user.tweets.each do |tweet|%>
+	
 
 	<ul>
-		<li><%= tweet.content %></li>
+		<% current_user.feed.each do |tweet|%>
+		<li>
+			<div>
+				<%= tweet.user.email %><br>
+				Tweetou:
+				<%= tweet.content %>
+			</div>
+			
+				
+		</li>
+		<% end %>
 	</ul>
 		
-	<% end %>
+	
 
 
 	<%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
 <% else %>
 	<%= link_to 'Sign In', new_user_session_path %>
 <% end %>
+	
+</div>
+
+
 
